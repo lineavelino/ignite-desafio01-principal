@@ -16,8 +16,9 @@ export function TaskList() {
 
   const uuid = require('uuid/v4');
 
-  function handleCreateNewTask(task: Task) {
+  function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    let task
 
     if (newTaskTitle !== "") {
       task = {
@@ -33,12 +34,19 @@ export function TaskList() {
 
       setNewTaskTitle('');
     };
-
-    return (tasks);
   }
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    tasks.map(task => {
+      if (task.id === id) {
+        if (task.isComplete === false) {
+          task.isComplete = true
+        } else {
+          task.isComplete = false
+        }
+      }
+    })
   }
 
   function handleRemoveTask(id: number) {

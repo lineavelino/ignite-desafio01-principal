@@ -1,11 +1,9 @@
-import { useState } from 'react'
-
-import '../styles/tasklist.scss'
-
-import { FiTrash, FiCheckSquare } from 'react-icons/fi'
+import { useState } from 'react';
+import { FiCheckSquare, FiTrash } from 'react-icons/fi';
+import '../styles/tasklist.scss';
 
 interface Task {
-  id: number;
+  id: string;
   title: string;
   isComplete: boolean;
 }
@@ -24,16 +22,16 @@ export function TaskList() {
       task = {
         id: uuid(),
         title: newTaskTitle,
-        isComplete: false,
-      };
+        isComplete: false
+      }
 
       setTasks([
         ...tasks,
-        task,
-      ]);
+        task
+      ])
 
-      setNewTaskTitle('');
-    };
+      setNewTaskTitle("")
+    }
   }
 
   function handleToggleTaskCompletion(id: number) {
